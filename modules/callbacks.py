@@ -77,10 +77,11 @@ async def process_callback(callback_query: types.CallbackQuery):
     elif data == "cmd":
         builder = InlineKeyboardBuilder()
         text = "Ботта орналасқан командалар тізімі 👇"
-        builder.row(InlineKeyboardButton(text=f"➕ Көмек", callback_data="help_cmd"),)
         builder.row(InlineKeyboardButton(text='🗣 Детектор - тілі', callback_data='lang_cmd'))
-        builder.row(InlineKeyboardButton(text=f"ℹ️ Ақпарат", callback_data="info_cmd"),)
-        builder.row(InlineKeyboardButton(text=f"Басқа", callback_data="more_cmd"),)
+        builder.row(InlineKeyboardButton(text=f"ℹ️ Ақпарат", callback_data="info_cmd"),
+                    InlineKeyboardButton(text=f"Басқа", callback_data="more_cmd"),)
+        builder.row (
+            InlineKeyboardButton(text=f"➕ Көмек", callback_data="help_cmd"),)
         builder.row(InlineKeyboardButton(text='« Мәзір', callback_data='menu'))
         await bot.edit_message_text(chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id, text=text, reply_markup=builder.as_markup())
 
