@@ -4,19 +4,11 @@ import json
 import os
 from dotenv import load_dotenv
 
-# Load environment variables from a .env file
+# Load environment variables from a .env file into the environment
 load_dotenv()
 
-# Retrieve the API key from environment variables
+# Retrieve the API key for the Soyle API from environment variables
 API_SOYLE = os.environ.get("API_SOYLE")
-URL_SOYLE = "https://soyle.nu.edu.kz/external-api/v1/translate/audio/"
-
-# Headers for the request with API key
-HEADERS = {
-    "Authorization": f"Api-Key {API_SOYLE}",
-    "accept": "application/json",
-    "Content-Type": "application/json"
-}
 
 # Function to convert an audio file to base64
 def convert_audio_to_base64(audio_file_path):
@@ -41,6 +33,8 @@ def translate_audio(audio_base64, target_language, output_format="text", output_
     :param output_voice: Voice for audio (male or female), if output is audio
     :return: Translated text or audio (in base64 format)
     """
+    url = "https://soyle.nu.edu.kz/external-api/v1/translate/audio/"
+
     # Prepare data for the request
     data = {
         "target_language": target_language,
@@ -52,8 +46,14 @@ def translate_audio(audio_base64, target_language, output_format="text", output_
     if output_voice:
         data["output_voice"] = output_voice
 
+    # Headers for the request with API key
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {API_SOYLE}"  # Add API key to the header
+    }
+
     # Send POST request to the API
-    response = requests.post(URL_SOYLE, data=json.dumps(data), headers=HEADERS)
+    response = requests.post(url, data=json.dumps(data), headers=headers)
 
     # Check the API response
     if response.status_code == 200:
@@ -68,11 +68,11 @@ def translate_audio(audio_base64, target_language, output_format="text", output_
 # Example usage:
 if __name__ == "__main__":
     # 1. Convert the audio file to base64
-    audio_file_path = "path_to_audio_file.wav"  # Specify the path to your audio file
+    audio_file_path = "kaz_tts_output.wav"  # Specify the path to your audio file
     audio_base64 = convert_audio_to_base64(audio_file_path)
 
     # 2. Define the target language for translation and parameters
-    target_language = "eng"  # Target language for translation (e.g., "kaz", "eng", "tur", "rus")
+    target_language = "kaz"  # Target language for translation (e.g., "kaz", "eng", "tur", "rus")
     output_format = "text"  # Output format ("text" or "audio")
     output_voice = "male"  # Optional: "male" or "female", if output is audio
 

@@ -1,6 +1,6 @@
 # Telegram Bot 'eKömek' with KazLLM API
 
-This is a Telegram bot built with **Aiogram** that integrates with the **KazLLM API** for natural language responses in Kazakh, Russian, and English. The bot also supports **speech recognition** for handling voice messages.
+This is a Telegram bot built with **Aiogram** that integrates with the **KazLLM API** for natural language responses in Kazakh, Russian, and English. The bot also supports **Soyle API** for handling voice messages.
 
 ## Legal Expertise
 
@@ -12,7 +12,7 @@ The responses are neutral, accurate, and follow the legal terminology accepted i
 
 ## Features
 
-- 🗣️ **Voice Recognition:** Processes and converts voice messages to text.
+- 🗣️ **Voice Recognition Integration Soyle App:** Processes and converts voice messages to text.
 - 💬 **KazLLM Integration:** Generates responses using KazLLM API.
 - 🌐 **Multilingual Support:** Supports Kazakh, Russian, Englsih languages.
 - ⚙️ **Easy Configuration:** Uses environment variables for settings.
@@ -35,6 +35,7 @@ Create a `.env` file with your API keys:
 ```env
 TOKEN=<Your Telegram Bot Token>
 API_RESPONSE=<Your KazLLM API Key>
+API_SOYLE=<Your Soyle API Key>
 ```
 
 ## Usage
@@ -52,16 +53,27 @@ The bot supports text and voice commands and replies using the KazLLM API.
 ```plaintext
 ├── e_app.py
 ├── .env
+├── config.py
 ├── README.md
 ├── requirements.txt
-├── config.py
 ├── modules
+│  ├── path
+│      ├── logo.png
+│      ├── descriptionpicture.jpg
+│      ├── logo2.jpg
+│      ├── soyle_app.ico
+│  ├── bot.py
+│  ├── callbacks.py
+│  ├── commands.py
+│  ├── functions.py
 ├── api_issai
-   ├──.env
-   ├── add_context.py
-   ├── get_context.py
-   ├── assistant_id.py
-   ├── soyle_tts.py
+│   ├── .env
+│   ├── add_context.py
+│   ├── get_context.py
+│   ├── assistant_id.py
+│   ├── soyle_tts.py
+│   ├── transcription.py
+│   ├── interactions.py
 ```
 
 ## To-Do List
@@ -69,11 +81,10 @@ The bot supports text and voice commands and replies using the KazLLM API.
 - [x] Initialize Telegram bot with Aiogram.
 - [x] Set up environment variables for API keys.
 - [x] Integrate KazLLM API for responses.
-- [ ] Add voice message handling.
-- [ ] Add error handling and logging.
-- [ ] Implement language switching command.
-- [ ] Add unit tests for API calls.
-- [ ] Create Docker support for easier deployment.
+- [x] Add voice message handling.
+- [x] Implement language switching command.
+- [x] Add unit tests for API calls.
+- [ ] Implement file_prompt method to handle file-based instructions.
 
 ## License
 
