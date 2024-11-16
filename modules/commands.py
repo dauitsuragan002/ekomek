@@ -42,7 +42,7 @@ async def help_handler(message: types.Message):
 async def more_handler(message: types.Message):
     if message.chat.type == 'private':
         builder = InlineKeyboardBuilder()
-        builder.row(InlineKeyboardButton(text='« Артқа', callback_data='command'))
+        builder.row(InlineKeyboardButton(text='« Артқа', callback_data='cmd'))
         more_text = handler_texts('more_handler')
         await message.answer(more_text, reply_markup=builder.as_markup())
 
