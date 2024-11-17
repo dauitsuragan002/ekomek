@@ -2,6 +2,8 @@
 
 This is a Telegram bot built with **Aiogram** that integrates with the **KazLLM API** for natural language responses in Kazakh, Russian, and English. The bot also supports **Soyle API** for handling voice messages.
 
+Link to bot:[@ekomek_bot](https://t.me/ekomek_bot)
+
 ## Legal Expertise
 
 The 'eKömek' bot serves as a virtual expert on the legislation of the Republic of Kazakhstan. Its purpose is to provide general legal recommendations to users in Kazakh, Russian, and English languages. All responses are based on the current laws of the Republic of Kazakhstan. When responding, the bot cites relevant codes, laws, and articles, quoting their content when necessary.
